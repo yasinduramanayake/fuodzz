@@ -17,7 +17,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import { VueSpinners } from "@saeris/vue-spinners";
-import "bootstrap";
+// import "bootstrap";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 

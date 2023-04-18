@@ -1,5 +1,5 @@
 <template>
-  <div class="container p-8 mx-auto max-w-7xl" v-if="product">
+  <div class="container p-8 mx-auto max-w-7xl product-page" v-if="product">
     <Breadcrumb
       :routeName="`DefaultVendor`"
       :routeId="product.vendor.id"
@@ -310,39 +310,50 @@
                 </div>
             </div>
         </section> -->
-    <div class="grid grid-cols-1 md:grid-cols-2 md:gap-10">
-      <div>
-        <img v-if="product.photo" :src="product.photo" class="h-80 w-96" />
-        <vue-horizontal
-          ref="horizontal"
-          class="horizontal"
-          responsive
-          v-if="product"
-        >
-          <div
-            v-for="photo in product.photos"
-            :key="photo.id"
-            class="flex flex-row px-2 mt-2 mb-10"
-          >
-            <a
-              @click="selectedImage(photo)"
-              class="flex flex-col items-center justify-center w-24 h-24 p-2 border border-gray-200 rounded-xl hover:border-gray-600 hover:border-2"
-            >
-              <img v-if="product" :src="photo" class="w-20 h-20 rounded-xl" />
-            </a>
+    <div class="grid grid-cols-1 md:grid-cols-2 md:gap-10 product-slide">
+      <div class="col-span-full md:col-span-6 product-slide-inner">
+          <div class="main-img" v-if="product.photo">
+            <img
+              v-bind:src="product.photo"
+              class="mx-auto mb-5 rounded-lg w-96 md:w-132"
+            />
           </div>
-        </vue-horizontal>
-      </div>
+          <vue-horizontal
+            ref="horizontal"
+            class="horizontal"
+            responsive
+            v-if="product"
+          >
+            <div
+              v-for="photo in product.photos"
+              :key="photo.id"
+              class="flex flex-row px-2 mb-10 horizontal-slide"
+            >
+              <a
+                @click="selectedImage(photo)"
+                class="flex flex-col items-center justify-center p-2 border border-gray-200 hover:border-gray-600 hover:border-2 h-16"
+              >
+                <img
+                  v-if="product"
+                  v-bind:src="photo"
+                  class="h-12 mx-auto rounded-md"
+                />
+              </a>
+            </div>
+          </vue-horizontal>
+        </div>
 
-      <div class="md:col-start-8 col-span-full product-details">
-          <div class="fw-bold fs-4 mb-3">
+
+      <!-- to be update -->
+      <div class="md:col-start-9 col-span-12 product-details">
+          <div class="font-bold text-lg mb-3">
             {{ product.name }}
           </div>
           <!-- <p class="text-4xl font-extrabold sm:mt-0 leading-large heading capitalize">
             {{ product.name }}
           </p> -->
-          <div class="d-flex align-items-center mb-3">
-            <div v-for="(item, index) in 4" :key="index" class="me-2">
+          <div class="flex items-center mb-3">
+            <div v-for="(item, index) in 4" :key="index" class="mr-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="w-4"
@@ -355,20 +366,20 @@
             </div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="w-4 me-3"
+              class="w-4 mr-3"
               viewBox="0 0 576 512"
             >
               <path
                 d="M287.9 0c9.2 0 17.6 5.2 21.6 13.5l68.6 141.3 153.2 22.6c9 1.3 16.5 7.6 19.3 16.3s.5 18.1-5.9 24.5L433.6 328.4l26.2 155.6c1.5 9-2.2 18.1-9.6 23.5s-17.3 6-25.3 1.7l-137-73.2L151 509.1c-8.1 4.3-17.9 3.7-25.3-1.7s-11.2-14.5-9.7-23.5l26.2-155.6L31.1 218.2c-6.5-6.4-8.7-15.9-5.9-24.5s10.3-14.9 19.3-16.3l153.2-22.6L266.3 13.5C270.4 5.2 278.7 0 287.9 0zm0 79L235.4 187.2c-3.5 7.1-10.2 12.1-18.1 13.3L99 217.9 184.9 303c5.5 5.5 8.1 13.3 6.8 21L171.4 443.7l105.2-56.2c7.1-3.8 15.6-3.8 22.6 0l105.2 56.2L384.2 324.1c-1.3-7.7 1.2-15.5 6.8-21l85.9-85.1L358.6 200.5c-7.8-1.2-14.6-6.1-18.1-13.3L287.9 79z"
               />
             </svg>
-            <span class="text-muted"> (0 reviews) </span>
+            <span class="text-gray-400"> (0 reviews) </span>
           </div>
           <!-- <hr/> -->
 
-          <div class="d-flex flex-row mb-3" style="font-size: 15px">
-            <div class="me-4">
-              <a href="javascript:;" class="text-decoration-none text-warning">
+          <div class="flex flex-row items-center mb-3" style="font-size: 15px">
+            <div class="mr-4">
+              <a href="javascript:;" class="no-underline text-yellow-500">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -388,8 +399,8 @@
                 Product Inquiry
               </a>
             </div>
-            <div class="me-4">
-              <a href="javascript:;" class="text-decoration-none text-muted">
+            <div class="mr-4">
+              <a href="javascript:;" class="no-underline text-gray-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -406,8 +417,8 @@
                 Add to wishlist
               </a>
             </div>
-            <div class="me-4">
-              <a href="javascript:;" class="text-decoration-none text-muted">
+            <div class="mr-4">
+              <a href="javascript:;" class="no-underline text-gray-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -430,15 +441,15 @@
             </div>
           </div>
 
-          <div class="flex flex-row mb-3">
-            <div class="text-muted me-3">Brand</div>
-            <div class="fw-bold">Calvin Klein</div>
+          <div class="flex flex-row items-center mb-3">
+            <div class="text-gray-400 mr-3">Brand</div>
+            <div class="font-bold">Calvin Klein</div>
           </div>
 
-          <div class="flex flex-row mb-3">
-            <div class="fw-bold me-4 mt-2">Inhouse product</div>
-            <div class="fw-bold">
-              <button class="btn btn-outline-warning rounded-pill">
+          <div class="flex flex-row items-center mb-3">
+            <div class="font-bold mr-4 mt-2">Inhouse product</div>
+            <div class="font-bold">
+              <button class="border border-yellow-300 text-yellow-300 rounded-full py-2 px-4" >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -461,18 +472,18 @@
           </div>
 
           <hr />
-
-          <div class="mb-3">
-            <table class="table table-borderless">
+<br>
+          <div class="mr-4">
+            <table class="border-collapse border-0 divide-y divide-gray-200">
               <tr style="vertical-align: middle">
-                <td class="text-muted ps-0">Price</td>
-                <td class="text-start">
-                  <span class="fw-bold text-danger">
+                <td class="text-gray-400 pl-0">Price</td>
+                <td class="text-left">
+                  <span class="font-bold text-red-500">
                     {{ currency }} {{ product.discount_price.toFixed(2) }}
                   </span>
-                  <span class="text-muted me-1"> / PC </span>
+                  <span class="text-gray-400 mr-1"> / PC </span>
                   <span
-                    class="badge text-bg-warning text-white rounded-0 pt-2 px-3"
+                    class="bg-yellow-300 text-white rounded-full py-2 px-3"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -495,7 +506,7 @@
                 </td>
               </tr>
               <tr style="vertical-align: middle">
-                <td class="text-muted ps-0">Quantity</td>
+                <td class="text-gray-400 pl-0">Quantity</td>
                 <td>
                   <div class="flex items-center">
                     <button
@@ -520,18 +531,21 @@
                 </td>
               </tr>
               <tr style="vertical-align: middle">
-                <td class="text-muted ps-0">Total Price</td>
-                <td class="fs-5 fw-bold text-danger text-start">
+                <td class="text-gray-400 pl-0">Total Price</td>
+                <td class="text-base font-bold text-red-500 text-left">
                   {{ currency }} {{ totalPrice.toFixed(2) }}
                 </td>
               </tr>
             </table>
           </div>
 
-          <div class="mb-3">
+
+          <br>
+
+          <div class="mr-4">
             <button
               type="button"
-              class="btn btn-warning rounded-0 text-white me-3"
+              class="bg-yellow-300 rounded-0 text-white me-3 py-2 px-4"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -547,9 +561,10 @@
                   d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zM8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5V8z"
                 />
               </svg>
-              <span class="fw-bold">Add to cart</span>
+              <span class="font-bold">Add to cart</span>
             </button>
-            <button type="button" class="btn btn-danger rounded-0 text-white">
+            &nbsp;
+            <button type="button" class="bg-red-500 rounded-0 text-white py-2 px-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -563,15 +578,18 @@
                   d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
                 />
               </svg>
-              <span class="fw-bold">Buy Now</span>
+              <span class="font-bold">Buy Now</span>
             </button>
           </div>
 
+          <br>
+
           <div>
-            <table class="table table-borderless">
+            <table class="border-collapse border-0">
               <tr style="vertical-align: middle">
-                <td class="ps-0 text-muted">Refund</td>
-                <td>
+                <td class="pl-0 text-gray-400">Refund</td>
+                &nbsp;
+                <td class="mx-10">
                   <div
                     style="
                       background-image: url('/img/refund-sticker.jpg');
@@ -583,16 +601,19 @@
                     "
                   ></div>
                 </td>
-                <td>
-                  <a href="#" class="text-decoration-none"> View Policy </a>
+                 &nbsp;
+                <td class="mx-10">
+                  <a href="#" class="no-underline text-blue-500"> View Policy </a>
                 </td>
               </tr>
-              <tr>
-                <td class="ps-0 text-muted">Share</td>
+              
+              <tr class="mx-10">
+                
+                <td class="pl-0 text-gray-400">Share</td>
                 <td colspan="2">
                   <button
                     type="button"
-                    class="btn rounded-0 py-2 me-2 text-white"
+                    class="bg-gray-800 rounded-0 py-2 px-4 mr-2 text-white"
                     style="background-color: #3490f3"
                   >
                     <svg
@@ -610,7 +631,7 @@
                   </button>
                   <button
                     type="button"
-                    class="btn rounded-0 py-2 me-2 text-white"
+                    class="bg-gray-800 rounded-0 py-2 px-4 mr-2 text-white"
                     style="background-color: #00aced"
                   >
                     <svg
@@ -628,7 +649,7 @@
                   </button>
                   <button
                     type="button"
-                    class="btn rounded-0 py-2 me-2 text-white"
+                    class="bg-gray-800 rounded-0 py-2 px-4 mr-2 text-white"
                     style="background-color: #3b5998"
                   >
                     <svg
@@ -646,7 +667,7 @@
                   </button>
                   <button
                     type="button"
-                    class="btn rounded-0 py-2 me-2 text-white"
+                    class="bg-gray-800 rounded-0 py-2 px-4 mr-2 text-white"
                     style="background-color: #007bb6"
                   >
                     <svg
@@ -664,7 +685,7 @@
                   </button>
                   <button
                     type="button"
-                    class="btn rounded-0 py-2 me-2 text-white"
+                    class="bg-gray-800 rounded-0 py-2 px-4 mr-2 text-white"
                     style="background-color: #29a628"
                   >
                     <svg
@@ -685,6 +706,7 @@
             </table>
           </div>
 
+          
           <span v-if="product.discount_price > 0">
             <div class="flex">
               <!-- <p class="pt-2 text-2xl pr-5 text-gray-400">Price:</p> -->
@@ -800,7 +822,9 @@
               {{ totalPrice.toFixed(2) }}
             </button>
           </div> -->
-        </div>
+      </div>
+
+      <!-- to be update  -->
     </div>
     <div class="mt-20 mb-10" v-if="product.option_groups">
       <p

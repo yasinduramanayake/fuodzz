@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 // import HomeView from '../views/HomeView.vue'
+import BecomeASeller from "../views/Default/BecomeASeller.vue";
 import DefaultHomeView from '../views/Default/HomeView.vue'
 
 const routes = [
@@ -126,6 +127,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "home" */ "../components/Default/pharmacy/UploadPrescription.vue"),
     meta: { guest: false },
   },
+  {
+    path: "/become-a-seller",
+    name: "Become A Seller",
+    component: BecomeASeller,
+  },
   // {
     // path: '/about',
     // name: 'about',
@@ -137,8 +143,9 @@ const routes = [
 ]
 
 const router = createRouter({
+   // eslint-disable-next-line no-undef
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
-
+ // eslint-disable-next-line no-undef
 export default router

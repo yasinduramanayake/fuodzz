@@ -39,8 +39,7 @@
             </p>
             <a
               :style="{ 'background-color': settings.colors.primaryColor }"
-              :href="`${this.$store.state.baseUrl}register/vendor`"
-              target="__blank"
+              href="/become-a-seller"
               class="flex items-center justify-center h-10 px-2 py-2 mt-5 mb-5 text-xs font-light text-center text-white rounded-full w-30 md:w-44 md:text-base md:h-14"
             >
               {{ $t("landingpageSellerHeader") }}</a
