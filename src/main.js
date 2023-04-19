@@ -70,6 +70,8 @@ firebase.initializeApp(firebaseConfig);
 
 require("@/assets/scss/landingpage.scss");
 require("@/assets/scss/productPage.scss");
+require("@/assets/scss/faq.scss");
+
 
 
 // use beforeEach route guard to set the language

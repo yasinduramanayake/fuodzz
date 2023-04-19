@@ -34,7 +34,7 @@
         <div class="small_break"></div>
         <div>
           <a
-            href="https://admin.shopswallet.com/register/vendor?lan=en"
+            :href="`${this.$store.state.baseUrl}register/driver`"
             class="bg-yellow-300 rounded-0 text-lead text-white uppercase py-3 px-6"
           >
             {{ $t("BecomeAseller.Button") }}
@@ -262,27 +262,120 @@
               aria-labelledby="contact-tab"
               tabindex="0"
             >
-              <div class="faq">
-                <div class="faq-item">
-                  <div class="faq-header">
-                    <h3>Question 1</h3>
-                    <button class="toggle-btn" @click="plus()" >
-                      <span class="arrow">&#x25BC;</span>
-                    </button>
+              <br />
+
+              <h2 class="text-center text-uppercase mt-4 text-xl font-bold">
+                {{ $t("BecomeAseller.FaqMainHeader") }}
+              </h2>
+              <div class="text-center text-gray-400 italic mb-5">
+                {{ $t("BecomeAseller.FaqSubHeader") }}
+              </div>
+              <div class="faq-section">
+                <h1 class="faq-main-header">Overview</h1>
+
+                <br />
+
+                <div class="faq">
+                  <div class="faq-item">
+                    <div class="faq-header" id="faq1-header">
+                      <h3 class="faq-question">
+                        <b>{{ $t("BecomeAseller.FaqAccordian1Header") }}</b>
+                      </h3>
+                      <button class="toggle-btn" @click="faq1()">
+                        <span class="arrow">{{ icon1 }}</span>
+                      </button>
+                    </div>
+                    <div v-if="icon1 === '\u25B2'" class="faq-content">
+                      <small class="answer-faq">{{
+                        $t("BecomeAseller.FaqAccordian1Body")
+                      }}</small>
+                    </div>
                   </div>
-                  <div class="faq-content">
-                    <p>Answer 1</p>
+                  <hr />
+                  <div class="faq-item">
+                    <div class="faq-header" id="faq2-header">
+                      <h3 class="faq-question">
+                        <b>{{ $t("BecomeAseller.FaqAccordian2Header") }}</b>
+                      </h3>
+                      <button class="toggle-btn" @click="faq2()">
+                        <span class="arrow">{{ icon2 }}</span>
+                      </button>
+                    </div>
+                    <div v-if="icon2 === '\u25B2'" class="faq-content">
+                      <small class="answer-faq">{{
+                        $t("BecomeAseller.FaqAccordian2Body")
+                      }}</small>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="faq-item">
+                    <div class="faq-header" id="faq3-header">
+                      <h3 class="faq-question">
+                        <b>{{ $t("BecomeAseller.FaqAccordian3Header") }}</b>
+                      </h3>
+                      <button class="toggle-btn" @click="faq3()">
+                        <span class="arrow">{{ icon3 }}</span>
+                      </button>
+                    </div>
+                    <div v-if="icon3 === '\u25B2'" class="faq-content">
+                      <small class="answer-faq">{{
+                        $t("BecomeAseller.FaqAccordian3Body")
+                      }}</small>
+                    </div>
                   </div>
                 </div>
-                <div class="faq-item">
-                  <div class="faq-header">
-                    <h3>Question 2</h3>
-                    <button class="toggle-btn">
-                      <span class="arrow">&#x25BC;</span>
-                    </button>
+                <br /><br />
+                <h1 class="faq-main-header">Sell Your Items</h1>
+
+                <br />
+
+                <div class="faq">
+                  <div class="faq-item">
+                    <div class="faq-header" id="faq4-header">
+                      <h3 class="faq-question">
+                        <b>{{ $t("BecomeAseller.FaqAccordian4Header") }}</b>
+                      </h3>
+                      <button class="toggle-btn" @click="faq4()">
+                        <span class="arrow">{{ icon4 }}</span>
+                      </button>
+                    </div>
+                    <div v-if="icon4 === '\u25B2'" class="faq-content">
+                      <small class="answer-faq">{{
+                        $t("BecomeAseller.FaqAccordian4Body")
+                      }}</small>
+                    </div>
                   </div>
-                  <div class="faq-content">
-                    <p>Answer 2</p>
+                  <hr />
+                  <div class="faq-item">
+                    <div class="faq-header" id="faq5-header">
+                      <h3 class="faq-question">
+                        <b>{{ $t("BecomeAseller.FaqAccordian5Header") }}</b>
+                      </h3>
+                      <button class="toggle-btn" @click="faq5()">
+                        <span class="arrow">{{ icon5 }}</span>
+                      </button>
+                    </div>
+                    <div v-if="icon5 === '\u25B2'" class="faq-content">
+                      <small class="answer-faq">{{
+                        $t("BecomeAseller.FaqAccordian5Body")
+                      }}</small>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="faq-item">
+                    <div class="faq-header" id="faq6-header">
+                      <h3 class="faq-question">
+                        <b>{{ $t("BecomeAseller.FaqAccordian6Header") }}</b>
+                      </h3>
+                      <button class="toggle-btn" @click="faq6()">
+                        <span class="arrow">{{ icon6 }}</span>
+                      </button>
+                    </div>
+                    <div v-if="icon6 === '\u25B2'" class="faq-content">
+                      <small class="answer-faq">{{
+                        $t("BecomeAseller.FaqAccordian6Body")
+                      }}</small>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -301,6 +394,14 @@ export default {
   data() {
     return {
       tab: "benifits",
+      base_url: this.$store.state.baseUrl,
+      faqNumber: "",
+      icon1: "\u25BC",
+      icon2: "\u25BC",
+      icon3: "\u25BC",
+      icon4: "\u25BC",
+      icon5: "\u25BC",
+      icon6: "\u25BC",
     };
   },
   mounted() {
@@ -325,8 +426,78 @@ export default {
       document.getElementById("tab1").style.color = "#666";
       document.getElementById("tab3").style.color = "blue";
     },
-
-  
+    faq1() {
+      if (this.icon1 === "\u25BC") {
+        this.icon1 = "\u25B2";
+        document.getElementById("faq1-header").style.color = "#145FA9";
+        document.getElementById("faq1-header").style.backgroundColor =
+          "#D5E1ED";
+      } else if (this.icon1 === "\u25B2") {
+        this.icon1 = "\u25BC";
+        document.getElementById("faq1-header").style.color = "black";
+        document.getElementById("faq1-header").style.backgroundColor = "white";
+      }
+    },
+    faq2() {
+      if (this.icon2 === "\u25BC") {
+        this.icon2 = "\u25B2";
+        document.getElementById("faq2-header").style.color = "#145FA9";
+        document.getElementById("faq2-header").style.backgroundColor =
+          "#D5E1ED";
+      } else if (this.icon2 === "\u25B2") {
+        this.icon2 = "\u25BC";
+        document.getElementById("faq2-header").style.color = "black";
+        document.getElementById("faq2-header").style.backgroundColor = "white";
+      }
+    },
+    faq3() {
+      if (this.icon3 === "\u25BC") {
+        this.icon3 = "\u25B2";
+        document.getElementById("faq3-header").style.color = "#145FA9";
+        document.getElementById("faq3-header").style.backgroundColor =
+          "#D5E1ED";
+      } else if (this.icon3 === "\u25B2") {
+        this.icon3 = "\u25BC";
+        document.getElementById("faq3-header").style.color = "black";
+        document.getElementById("faq3-header").style.backgroundColor = "white";
+      }
+    },
+    faq4() {
+      if (this.icon4 === "\u25BC") {
+        this.icon4 = "\u25B2";
+        document.getElementById("faq4-header").style.color = "#145FA9";
+        document.getElementById("faq4-header").style.backgroundColor =
+          "#D5E1ED";
+      } else if (this.icon4 === "\u25B2") {
+        this.icon4 = "\u25BC";
+        document.getElementById("faq4-header").style.color = "black";
+        document.getElementById("faq4-header").style.backgroundColor = "white";
+      }
+    },
+    faq5() {
+      if (this.icon5 === "\u25BC") {
+        this.icon5 = "\u25B2";
+        document.getElementById("faq5-header").style.color = "#145FA9";
+        document.getElementById("faq5-header").style.backgroundColor =
+          "#D5E1ED";
+      } else if (this.icon5 === "\u25B2") {
+        this.icon5 = "\u25BC";
+        document.getElementById("faq5-header").style.color = "black";
+        document.getElementById("faq5-header").style.backgroundColor = "white";
+      }
+    },
+    faq6() {
+      if (this.icon6 === "\u25BC") {
+        this.icon6 = "\u25B2";
+        document.getElementById("faq6-header").style.color = "#145FA9";
+        document.getElementById("faq6-header").style.backgroundColor =
+          "#D5E1ED";
+      } else if (this.icon6 === "\u25B2") {
+        this.icon6 = "\u25BC";
+        document.getElementById("faq6-header").style.color = "black";
+        document.getElementById("faq6-header").style.backgroundColor = "white";
+      }
+    },
   },
 };
 </script>
@@ -395,7 +566,7 @@ export default {
   align-items: center;
   cursor: pointer;
   padding: 10px;
-  background-color: #ddd;
+  background-color: #ffffff;
 }
 
 .faq-header h3 {
@@ -405,7 +576,6 @@ export default {
 .faq-content {
   padding: 10px;
   background-color: #f9f9f9;
-  display: none;
 }
 
 .faq-item.active .faq-content {

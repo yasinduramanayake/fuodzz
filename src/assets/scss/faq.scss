@@ -1,0 +1,22 @@
+.faq-section {
+  padding-left: 10%;
+  padding-right: 10%;
+  @media only screen and (max-width: 768px) {
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+}
+.answer-faq {
+  color: rgb(96, 87, 87);
+  text-align: justify;
+}
+.faq-question {
+  text-transform: uppercase;
+
+}
+.faq-main-header {
+    font-size: 30px;
+    color: #616263;
+    font-weight: 100;
+    font-family: 'Times New Roman', Times, serif;
+}
