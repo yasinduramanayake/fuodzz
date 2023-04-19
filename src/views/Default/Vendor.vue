@@ -1,6 +1,6 @@
 <template>
-  <div class="pt-10 pb-5 bg-gray-50 vendor">
-    <div class="container px-5 mx-auto max-w-7xl" v-if="vendor">
+  <div class="py-10 bg-gray-50 vendor">
+    <div class="max-w-7xl mx-auto px-5" v-if="vendor">
       <!-- <div class="row"> -->
       <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2">
             <div class="mb-4">
@@ -73,7 +73,8 @@
             </div>
           </div>
           <div
-            class="flex justify-end col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-2 xl:col-span-2 2xl:col-span-2"
+            class="flex justify-end col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-2 xl:col-span-2 2xl:col-span-2 icon-vendor"
+           
           >
             <button class="mr-4">
               <svg
